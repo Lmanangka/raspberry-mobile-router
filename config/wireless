@@ -1,0 +1,40 @@
+#Built-in WiFi device configuration
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option path 'platform/soc/3f300000.mmcnr/mmc_host/mmc1/mmc1:0001/mmc1:0001:1'
+	option channel '7'
+	option band '2g'
+	option hwmode '11a'
+	option htmode 'HT20'
+	option disabled '0'
+	option cell_density '0'
+	option short_gi_40 '0'
+
+#Built-in WiFi interface configuration as Access Point
+config wifi-iface 'wifinet1'
+	option device 'radio0'
+	option mode 'ap'
+	option network 'lan'
+	option ssid '<SSID OR WIFI NAME>'
+	option encryption 'psk2'
+	option key '<WIFI PASSWORD>'
+
+#USB WiFi device configuration
+config wifi-device 'radio1'
+	option type 'mac80211'
+	option path 'platform/soc/3f980000.usb/usb1/1-1/1-1.2/1-1.2:1.0'
+	option channel '6'
+	option band '2g'
+	option hwmode '11g'
+	option disabled '0'
+	option cell_density '0'
+	option htmode 'HT20'
+
+#USB WiFi interface configuration as station meaning connect to other wifi
+config wifi-iface 'default_radio1'
+	option device 'radio1'
+	option network 'wwan'
+	option mode 'sta'
+	option ssid '<WIFI TARGET SSID>'
+	option encryption 'psk2'
+	option key '<WIFI TARGET PASSWORD>'
